@@ -65,8 +65,10 @@ export interface ResumeData {
     educations: boolean;
     skills: boolean;
   };
-  theme: 'classic' | 'modern' | 'minimal';
+  sectionOrder: string[];
+  theme: 'classic' | 'modern' | 'minimal' | 'standard';
   primaryColor: string;
+  fontSize: number;
 }
 
 export const initialData: ResumeData = {
@@ -125,6 +127,20 @@ export const initialData: ResumeData = {
           content: "소프트웨어 설계 및 개발 역량 인증"
         }
       ]
+    },
+    {
+      id: "c2",
+      title: "강의 경력",
+      visible: true,
+      items: [
+        {
+          id: "ci2",
+          title: "React 실전 프로젝트",
+          period: "2023.03 - 2023.06",
+          subtitle: "패스트캠퍼스",
+          content: "React와 TypeScript를 활용한 실전 웹 개발 강의"
+        }
+      ]
     }
   ],
   visibility: {
@@ -133,6 +149,8 @@ export const initialData: ResumeData = {
     educations: true,
     skills: true,
   },
+  sectionOrder: ['summary', 'experiences', 'educations', 'skills', 'c1', 'c2'],
   theme: 'modern',
-  primaryColor: '#2563eb'
+  primaryColor: '#2563eb',
+  fontSize: 16
 };

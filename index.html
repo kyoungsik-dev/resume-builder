@@ -40,6 +40,18 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
 
+        /* Tailwind text 클래스를 em 단위로 오버라이드 (resume-paper 내부만) */
+        .resume-paper .text-\[10px\] { font-size: 0.625em; }
+        .resume-paper .text-\[11px\] { font-size: 0.6875em; }
+        .resume-paper .text-xs { font-size: 0.75em; line-height: 1.5em; }
+        .resume-paper .text-sm { font-size: 0.875em; line-height: 1.5em; }
+        .resume-paper .text-base { font-size: 1em; line-height: 1.5em; }
+        .resume-paper .text-lg { font-size: 1.125em; line-height: 1.75em; }
+        .resume-paper .text-xl { font-size: 1.25em; line-height: 1.75em; }
+        .resume-paper .text-2xl { font-size: 1.5em; line-height: 2em; }
+        .resume-paper .text-4xl { font-size: 2.25em; line-height: 2.5em; }
+        .resume-paper .text-5xl { font-size: 3em; line-height: 1; }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
