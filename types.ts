@@ -71,6 +71,31 @@ export interface ResumeData {
   fontSize: number;
 }
 
+export const emptyData: ResumeData = {
+  personalInfo: {
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+    jobTitle: "",
+    summary: "",
+  },
+  experiences: [],
+  educations: [],
+  skills: [],
+  customSections: [],
+  visibility: {
+    summary: true,
+    experiences: true,
+    educations: true,
+    skills: true,
+  },
+  sectionOrder: ['summary', 'experiences', 'educations', 'skills'],
+  theme: 'standard',
+  primaryColor: '#2563eb',
+  fontSize: 16,
+};
+
 export const initialData: ResumeData = {
   personalInfo: {
     fullName: "홍길동",
@@ -150,7 +175,7 @@ export const initialData: ResumeData = {
     skills: true,
   },
   sectionOrder: ['summary', 'experiences', 'educations', 'skills', 'c1', 'c2'],
-  theme: 'modern',
+  theme: 'standard',
   primaryColor: '#2563eb',
   fontSize: 16
 };

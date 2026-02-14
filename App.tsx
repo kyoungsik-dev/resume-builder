@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
-import { ResumeData, initialData } from './types';
+import { ResumeData, initialData, emptyData } from './types';
 import { parsePdfResume } from './services/gemini';
 
 const App: React.FC = () => {
@@ -255,7 +255,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 no-print">
         <div className="flex items-center gap-3">
@@ -335,12 +335,18 @@ const App: React.FC = () => {
             className="hidden"
           />
           <button
-            onClick={() => pdfInputRef.current?.click()}
+            onClick={() => {
+              if (isPdfLoading) return;
+              if (confirm('본인의 이력서 PDF 파일을 불러와 자동으로 채워넣는 AI 기능입니다.\n\n계속 진행하시겠습니까?')) {
+                pdfInputRef.current?.click();
+              }
+            }}
             disabled={isPdfLoading}
             className="text-slate-500 hover:text-slate-800 text-sm font-medium px-3 py-2 flex items-center gap-1.5 disabled:opacity-50"
           >
-            {isPdfLoading ? <i className="fa-solid fa-spinner fa-spin text-xs"></i> : <i className="fa-solid fa-file-pdf text-xs"></i>}
-            {isPdfLoading ? 'PDF 분석 중...' : 'PDF 불러오기'}
+            {isPdfLoading ? <i className="fa-solid fa-spinner fa-spin text-xs"></i> : <i className="fa-solid fa-wand-magic-sparkles text-xs"></i>}
+            {isPdfLoading ? 'AI 분석 중...' : '이력서 가져오기'}
+            {!isPdfLoading && <span className="text-[10px] bg-blue-100 text-blue-600 font-bold px-1.5 py-0.5 rounded-full leading-none">AI</span>}
           </button>
           <input
             ref={pdfInputRef}
@@ -397,7 +403,7 @@ const App: React.FC = () => {
 
       {/* Footer / Status */}
       <footer className="bg-white border-t border-slate-200 py-2 px-6 flex justify-between items-center text-[10px] text-slate-400 uppercase tracking-widest no-print">
-        <span>© 2024 AI Resume Pro • All changes autosaved</span>
+        <span>© 2026 AI Resume Pro • All changes autosaved</span>
         <div className="flex gap-4">
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500"></span> Online</span>
           <span>Build version 1.0.2</span>
